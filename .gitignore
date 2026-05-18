@@ -1,0 +1,8 @@
+.env
+build/
+dist/
+*.pkg
+node_modules/
+runtime/
+*.app
+instances/
