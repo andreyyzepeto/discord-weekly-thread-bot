@@ -1,17 +1,16 @@
 import fs from "node:fs";
 
-export const DEFAULT_GUIDE_MESSAGE = `Please read the guidelines below and submit only one link per weekly feed boosting request.
+export const DEFAULT_GUIDE_MESSAGE = `아래 가이드라인을 확인하시고, 피드 부스팅 요청은 주 1회로 단 하나의 링크만 제출해주세요.
 
-Submission guidelines:
-Your content must be high quality and follow the ZEPETO Community Guidelines. Sexual content, weapons, blood, and similar restricted content are not allowed.
-Make sure your ZEPETO avatar is clearly visible on the cover feed.
-Add relevant tags, including common tags such as #ZEPETO, #helloworld, #likeforlike, and #fyp where appropriate.
-Unedited booth videos or photos will not be boosted.
+ 콘텐츠 제출 시 반드시 다음 사항을 준수해주세요:
+콘텐츠는 고퀄리티이며 ZEPETO 커뮤니티 가이드라인을 따라야 합니다 (성적인 콘텐츠, 무기, 피 등은 금지).
+커버 피드에 ZEPETO 아바타가 명확하게 보이도록 해주세요.
+#ZEPETO, #helloworld, #likeforlike, #fyp 등과 같은 일반적인 해시태그를 포함해 관련 태그들을 추가해주세요.
+편집되지 않은 부스 영상이나 사진은 부스팅되지 않습니다.
 
-A new weekly thread is posted every Monday. Previous threads may be locked, so please submit your request on time.
+ 새로운 주차의 스레드는 매주 월요일에 업데이트되며 이전 스레드는 잠금 처리되므로 타이밍에 유의해주세요!
 
-Thank you to all creators for making high-quality and engaging content. <:Blue_Badge:1331142137592545341>`;
-
+수준 높고 매력적인 콘텐츠들 제작해주시는 크리에이터 분들께 항상 감사드립니다💖:Blue_Badge:`;
 export function loadGuideMessage(filePath: string): string {
   try {
     const content = fs.readFileSync(filePath, "utf8").trim();
