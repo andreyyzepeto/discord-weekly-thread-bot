@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup Node.js
@@ -19,8 +19,21 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Show project structure
+      - name: Create instance config
         run: |
-          pwd
-          ls -la
-          cat package.json
+          mkdir -p instances/instance-1
+
+          cat > instances/instance-1/.env << EOF
+          DISCORD_TOKEN=${{ secrets.DISCORD_TOKEN }}
+          CHANNEL_ID=${{ secrets.CHANNEL_ID }}
+          DAY_OF_WEEK=${{ secrets.DAY_OF_WEEK }}
+          HOUR=${{ secrets.HOUR }}
+          MINUTE=${{ secrets.MINUTE }}
+          TIMEZONE=${{ secrets.TIMEZONE }}
+          AUTO_ARCHIVE_DURATION=${{ secrets.AUTO_ARCHIVE_DURATION }}
+          RUN_ON_STARTUP=false
+          PAUSED=false
+          EOF
+
+      - name: Run bot once
+        run: npm run create-now -- instance-1
