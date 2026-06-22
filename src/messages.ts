@@ -10,7 +10,7 @@ export const DEFAULT_GUIDE_MESSAGE = `아래 가이드라인을 확인하시고,
 
  새로운 주차의 스레드는 매주 월요일에 업데이트되며 이전 스레드는 잠금 처리되므로 타이밍에 유의해주세요!
 
-수준 높고 매력적인 콘텐츠들 제작해주시는 크리에이터 분들께 항상 감사드립니다💖:Blue_Badge:`;
+수준 높고 매력적인 콘텐츠들 제작해주시는 크리에이터 분들께 항상 감사드립니다💖`;
 export function loadGuideMessage(filePath: string): string {
   try {
     const content = fs.readFileSync(filePath, "utf8").trim();
