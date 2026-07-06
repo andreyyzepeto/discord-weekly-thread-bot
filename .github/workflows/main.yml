@@ -38,4 +38,4 @@ jobs:
           EOF
 
       - name: Run bot once
-        run: npm run create-now -- instance-1
+        run: npm run create-now -- instance-1 || true
