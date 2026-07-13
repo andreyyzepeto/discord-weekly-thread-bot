@@ -2,7 +2,7 @@ name: Weekly Discord Thread
 
 on:
   schedule:
-    - cron: '10 2 * * 1'
+    - cron: '30 0 * * 1'
   workflow_dispatch:
 
 jobs:
@@ -21,6 +21,20 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Wait until 09:00 Vietnam time
+        shell: bash
+        run: |
+          TARGET=$(TZ=Asia/Ho_Chi_Minh date -d "today 09:00" +%s)
+          NOW=$(date +%s)
+
+          if [ "$NOW" -lt "$TARGET" ]; then
+            WAIT_SECONDS=$((TARGET - NOW))
+            echo "Waiting $WAIT_SECONDS seconds until 09:00 Vietnam time..."
+            sleep "$WAIT_SECONDS"
+          else
+            echo "It is already past 09:00 Vietnam time. Continuing immediately."
+          fi
+
       - name: Create instance config
         run: |
           mkdir -p instances/instance-1
@@ -38,4 +52,4 @@ jobs:
           EOF
 
       - name: Run bot once
-        run: npm run create-now -- instance-1 || true
+        run: npm run create-now -- instance-1
