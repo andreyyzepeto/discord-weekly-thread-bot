@@ -1,8 +1,6 @@
 name: Weekly Discord Thread
 
 on:
-  schedule:
-    - cron: '30 0 * * 1'
   workflow_dispatch:
 
 jobs:
